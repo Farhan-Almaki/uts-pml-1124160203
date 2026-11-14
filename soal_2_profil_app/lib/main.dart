@@ -1,21 +1,39 @@
-class Profile {
-  String nama;
-  String nim;
-  String prodi;
-  String kelas;
-  String email;
-  String noHp;
-  String bio;
-  String github;
+import 'package:flutter/material.dart';
+import 'screens/login_page.dart';
 
-  Profile({
-    required this.nama,
-    required this.nim,
-    required this.prodi,
-    required this.kelas,
-    required this.email,
-    required this.noHp,
-    required this.bio,
-    required this.github,
-  });
+final ValueNotifier<ThemeMode> themeNotifier = ValueNotifier(ThemeMode.system);
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (context, ThemeMode currentMode, child) {
+        return MaterialApp(
+          title: 'Profil Farhan',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: Colors.blueAccent,
+              brightness: Brightness.dark,
+            ),
+            useMaterial3: true,
+          ),
+          themeMode: currentMode,
+          home: const LoginPage(),
+        );
+      },
+    );
+  }
 }
