@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import '../main.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
+import 'about_page.dart';
+import 'login_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -23,8 +26,60 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Profil Saya'), centerTitle: true),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(myProfile.nama),
+              accountEmail: Text(myProfile.email),
+              currentAccountPicture: const CircleAvatar(
+                backgroundImage: AssetImage('assets/images/foto_profil.jpg'),
+              ),
+              decoration: const BoxDecoration(color: Colors.blueAccent),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profil'),
+              onTap: () => Navigator.pop(context),
+            ),
+            ListTile(
+              leading: const Icon(Icons.info),
+              title: const Text('Tentang Saya'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutPage()),
+                );
+              },
+            ),
+            SwitchListTile(
+              secondary: Icon(isDarkMode ? Icons.dark_mode : Icons.light_mode),
+              title: const Text('Mode Gelap'),
+              value: isDarkMode,
+              onChanged: (bool value) {
+                themeNotifier.value = value ? ThemeMode.dark : ThemeMode.light;
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('Keluar', style: TextStyle(color: Colors.red)),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
