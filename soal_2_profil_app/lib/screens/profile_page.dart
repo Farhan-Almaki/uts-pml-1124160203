@@ -3,6 +3,7 @@ import '../main.dart';
 import '../models/profile.dart';
 import '../widgets/info_tile.dart';
 import 'about_page.dart';
+import 'edit_profile_page.dart';
 import 'login_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -18,9 +19,9 @@ class _ProfilePageState extends State<ProfilePage> {
     nim: '1124160203',
     prodi: 'Teknik Informatika',
     kelas: 'TI 24 P SE 3',
-    email: 'farhan.almaki@student.ac.id',
-    noHp: '081234567890',
-    bio: 'Mahasiswa Semester 5 yang tertarik pada pengembangan aplikasi mobile dengan Flutter.',
+    email: 'faanfann11@gmail.com',
+    noHp: '085281419072',
+    bio: 'Mahasiswa Semester 5 Jurusan Software Engineering yang sukan main Game dan Naik Gunung.',
     github: 'github.com/Farhan-Almaki',
   );
 
@@ -113,6 +114,27 @@ class _ProfilePageState extends State<ProfilePage> {
             InfoTile(icon: Icons.code, label: 'GitHub', value: myProfile.github),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final updatedData = await Navigator.push<Profile>(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditProfilePage(currentProfile: myProfile),
+            ),
+          );
+
+          if (updatedData != null) {
+            setState(() {
+              myProfile = updatedData;
+            });
+            if (!mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Profil berhasil diperbarui!')),
+            );
+          }
+        },
+        child: const Icon(Icons.edit),
       ),
     );
   }
