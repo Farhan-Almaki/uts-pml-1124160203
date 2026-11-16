@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
     kelas: 'TI 24 P SE 3',
     email: 'faanfann11@gmail.com',
     noHp: '085281419072',
-    bio: 'Mahasiswa Semester 5 Jurusan Software Engineering yang sukan main Game dan Naik Gunung.',
+    bio: 'Mahasiswa Semester 5 Jurusan Software Engineering yang suka main Game dan Naik Gunung.',
     github: 'github.com/Farhan-Almaki',
   );
 
@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
             setState(() {
               myProfile = updatedData;
             });
-            if (!mounted) return;
+            if (!context.mounted) return;
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Profil berhasil diperbarui!')),
             );
