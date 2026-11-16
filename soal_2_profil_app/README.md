@@ -14,7 +14,7 @@
 
 | Halaman Login | Halaman Profil | Menu Drawer | Halaman Tentang Saya | Halaman Edit Profil |
 | :---: | :---: | :---: | :---: | :---: |
-| <img src="soal_2_profil_app/assets/screenshot/ss1.jpeg" width="160" alt="Halaman Login"/> | <img src="soal_2_profil_app/assets/screenshot/ss2.jpeg" width="160" alt="Halaman Profil"/> | <img src="soal_2_profil_app/assets/screenshot/ss3.jpeg" width="160" alt="Menu Drawer"/> | <img src="soal_2_profil_app/assets/screenshot/ss4.jpeg" width="160" alt="Halaman Tentang Saya"/> | <img src="soal_2_profil_app/assets/screenshot/ss5.jpeg" width="160" alt="Halaman Edit Profil"/> |
+|<img src="assets/screenshot/ss1.jpeg" width="160" alt="Halaman Login"/> | <img src="assets/screenshot/ss2.jpeg" width="160" alt="Halaman Profil"/> | <img src="assets/screenshot/ss3.jpeg" width="160" alt="Menu Drawer"/> | <img src="assets/screenshot/ss4.jpeg" width="160" alt="Halaman Tentang Saya"/> | <img src="assets/screenshot/ss5.jpeg" width="160" alt="Halaman Edit Profil"/> |
 
 ## Daftar Fitur
 - **Login (`LoginPage`):** Validasi input NIM dan password menggunakan `GlobalKey<FormState>` sebelum masuk ke halaman utama menggunakan `Navigator.pushReplacement`.
